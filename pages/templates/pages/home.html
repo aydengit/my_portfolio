@@ -1,7 +1,47 @@
-<!-- pages/templates/pages/home.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}My Portfolio{% endblock title %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block extra_head %}{% endblock extra_head %}
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>My Portfolio</h1>
+            <nav>
+                <ul>
+                    <li><a href="{% url 'home' %}">Home</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-{% extends "./base.html" %}
+    <div class="container">
+        {% block content %}
+        <!-- 슬라이드쇼 컨테이너 -->
+        <div class="slideshow-container">
+            <div class="mySlides fade">
+                <img src="{% static 'images/portfolio1.jpg' %}" style="width:80%">
+            </div>
+            <div class="mySlides fade">
+                <img src="{% static 'images/portfolio2.jpg' %}" style="width:80%">
+            </div>
+            <div class="mySlides fade">
+                <img src="{% static 'images/portfolio3.jpg' %}" style="width:80%">
+            </div>
+            <!-- 추가 이미지 슬라이드를 여기에 추가 -->
+        </div>
+        {% endblock content %}
+    </div>
 
-{% block page_content %}
-    <h1>Hello, World!</h1>
-{% endblock page_content %}
+    <footer>
+        &copy; 2024 My Portfolio. All rights reserved.
+    </footer>
+
+    <script src="{% static 'js/slideshow.js' %}"></script>
+</body>
+</html>
